@@ -17,6 +17,12 @@ class Brick:
     # sort bricks to max -> min
     # specify comporator key
 
+    def rotate(self):
+
+        temp = self.width
+        self.width = self.height
+        self.height = temp
+
     @classmethod
     def print(cls, data):
         if isinstance(data, list):

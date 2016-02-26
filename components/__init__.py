@@ -1,6 +1,6 @@
 #! /usr/bin/env Python3
 
-__version__ = "0.5.1"
+__version__ = "0.6.0"
 __author__ = "Kostiantyn Girych"
 __copyright__ = "Copyright 2016"
 __license__ = "MIT"
