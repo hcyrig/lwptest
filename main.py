@@ -15,16 +15,24 @@ def life_circle():
     if director.prepare():
         wall = director.is_running()
         if wall is not None:
-            print(wall.force_self())
+            result = wall.force_self()
+            print("Result of wall building:")
+            print()
+            print("************")
+            print()
+            print("**", result, "**")
+            print()
+            print("************")
+            print()
             del wall
     del director
 
 # scripts's an enter point
 
 print("The test programme as a wall's building algorithm.")
-print("programme's version is: ", components.__version__)
+print("Programme's version is: ", components.__version__)
 
 life_circle()
 
-print("programme closes without errors")
+print("Programme closes without errors")
 print("Have a nice day!")

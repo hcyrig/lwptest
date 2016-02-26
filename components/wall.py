@@ -10,8 +10,6 @@ class Wall:
     """
     # constructor for wall mush have area parameter
 
-    blueprint = []
-
     def __init__(self, data):   # 'area' is a <list type>
 
         self.width = 0
@@ -35,13 +33,28 @@ class Wall:
         return Builder(self).build()
 
     # print existing wall
+
     def print(self):
 
+        print()
         print("Wall:")
-        print("Width: ", self.width)
-        print("Height: ", self.height)
-        print("Blueprint:", self.blueprint)
+        print("W: ", self.width, end=" ")
+        print("H: ", self.height)
+        for row in self.blueprint:
+            for part in row:
+                if part == 1:
+                    print("*", end="")
+                else:
+                    print(" ", end="")
+            print()
         Brick.print(self.bricks)
+
+    def print_raw_data(self):
+
+        print("Raw wall:")
+        print(self.width, self.height, self.blueprint)
+        print("Raw bricks:")
+        print(Brick.blueprint)
 
     # separate a raw wall's data to object fields
 
@@ -50,7 +63,6 @@ class Wall:
         wall_skeleton = data[0]
         self.width = int(wall_skeleton[0])
         self.height = int(wall_skeleton[1])
-        Wall.blueprint = data[:self.height+1]
         return data[1:self.height+1]
 
     # separate a raw bricks' data to object fields
@@ -64,8 +76,7 @@ class Wall:
         bricks_blueprints = data[1:]
         type_list = []
         for blueprint in bricks_blueprints:
-            for one_bl in range(0, int(blueprint[2])):
-                type_list.append(Brick(blueprint[0],
-                                       blueprint[1],
-                                       blueprint[2]))
+            type_list.append(Brick(blueprint[0],
+                                   blueprint[1],
+                                   blueprint[2]))
         return type_list

@@ -28,7 +28,6 @@ class IO:
     def __file_name(cls):
         file_name = IO.__file_name_from_params()
         if file_name is None:
-            print("In command line params file name hasn't founded")
             file_name = constants.FILE_DEFAULT_TITLE
         return file_name
 
@@ -42,9 +41,9 @@ class IO:
                       constants.FILE_READ_PARAMETER,
                       encoding=constants.FILE_DEFAULT_ENCODING) as infile:
                 return infile.readlines()
-        except:
+        except Exception as e:
             print("In current folder a file hasn't founded \
-            or file hasn't corrected")
+            or file hasn't corrected. Exp: ", e)
         return None
 
     @classmethod
@@ -62,5 +61,6 @@ class IO:
                     constants.STANDART_INPUT_PART_OF_BRICKS_BLUEPRINTS))
             print(data)
             return data
-        except:
+        except Exception as e:
+            print("Exp: ", e)
             return None

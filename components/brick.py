@@ -20,13 +20,17 @@ class Brick:
     @classmethod
     def print(cls, data):
         if isinstance(data, list):
-            print("Possible bricks:")
+            print()
+            print("Bricks:")
+            print()
             for brick in data:
                 if isinstance(brick, Brick):
-                    print("brick:")
-                    print("width", brick.width)
-                    print("height", brick.height)
-            print()
+                    for w in range(0, brick.width):
+                        for h in range(0, brick.height):
+                            print("*", end="")
+                        print()
+                    print(brick.count)
+                print()
 
     @classmethod
     def sort(cls, data):
@@ -35,9 +39,11 @@ class Brick:
 
     @classmethod
     def cmp_to_key(cls, mycmp):
+
         """
         Convert a cmp= function into a key= function
         """
+
         class K:
 
             def __init__(self, obj, *args):
